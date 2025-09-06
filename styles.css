@@ -26,23 +26,19 @@ body{
   display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap;
   padding-top:32px;
 }
-.identity{display:flex; align-items:center; gap:16px}
-.avatar{
-  width:84px;height:84px;border-radius:50%;
-  display:grid;place-items:center;
-  background: linear-gradient(135deg, var(--brand), var(--accent));
-  color:#071018;font-weight:800;font-size:28px;letter-spacing:1px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 30px rgba(255,255,255,.25);
-  user-select:none;
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: 2px solid #ccc;
 }
-.name{margin:0;font-size: clamp(22px, 4vw, 32px);line-height:1.2}
-.role{margin:.25rem 0 0;color:var(--muted)}
+.identity {
+  display: flex;
+  align-items: center;
+}
 
-.contact{display:flex; gap:8px; flex-wrap:wrap; font-style:normal}
-.chip{
-  background:var(--chip);border:1px solid #263243;color:var(--text);
-  padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:500;
-}
 .chip:hover{border-color:var(--brand)}
 
 .grid{
@@ -98,4 +94,48 @@ body{
   body{ background:white; color:#111827 }
   .card{ box-shadow:none }
   .chip, .tag, .btn{ border-color:#d1d5db; color:#111827 }
+}
+/* responsive uso de media queries movil y web */ 
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .identity {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  h1.name {
+    font-size: 1.8rem;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .contact .chip {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
 }
