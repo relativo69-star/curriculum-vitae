@@ -145,3 +145,81 @@ body {
   .card { box-shadow: none; }
   .chip, .tag, .btn { border-color: #d1d5db; color: #111827; }
 }
+/* --- Interactividad --- */
+
+/* 1. Animación en barras de habilidades */
+.bar i {
+  transition: width 1s ease-in-out;
+}
+
+/* 2. Botones con hover/focus accesible */
+.btn {
+  transition: all 0.3s ease;
+}
+.btn:hover,
+.btn:focus-visible {
+  background: linear-gradient(180deg, var(--brand), var(--accent));
+  color: #000;
+  outline: none;
+}
+
+/* 3. Tarjetas interactivas */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+}
+/* --- Accesibilidad --- */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--brand);
+  color: #000;
+  padding: 8px;
+  border-radius: 4px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 10px;
+}
+/* 1. Foto de perfil interactiva */
+.profile-photo {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.profile-photo:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 0 15px var(--brand);
+}
+
+/* 2. Tags con glow */
+.tag:hover, .project .stack li:hover {
+  background: var(--brand);
+  color: #000;
+  box-shadow: 0 0 10px var(--brand);
+  cursor: pointer;
+}
+
+/* 3. Timeline con efecto dinámico */
+.timeline li {
+  position: relative;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(var(--brand), var(--accent));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease;
+}
+.timeline li:hover::before {
+  transform: scaleY(1);
+}
